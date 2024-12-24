@@ -1,0 +1,19 @@
+services:
+  everhour-api:
+    image: {{ docker_image }}
+    deploy:
+      replicas: {{ replicas }}
+      restart_policy:
+        condition: any
+    ports:
+      - "{{ host_port }}:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "{{ app_environment }}"
+      Everhour__ApiKey: "{{ everhour_api_key }}"
+      Everhour__ProjectId: "{{ everhour_project_id }}"
+    networks:
+      - everhour-net
+
+networks:
+  everhour-net:
+    driver: overlay

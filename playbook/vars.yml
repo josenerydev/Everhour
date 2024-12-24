@@ -1,0 +1,4 @@
+docker_image: "josenerydev/everhour-api:v2"
+replicas: 1
+host_port: 5080
+app_environment: "Production"

@@ -1,0 +1,20 @@
+---
+- name: Deploy Docker Compose for Everhour API
+  hosts: everhour
+  vars_files:
+    - vars.yml
+    - secrets.yml
+  tasks:
+    - name: Create project directory
+      file:
+        path: /etc/projects/everhour
+        state: directory
+        mode: '0755'
+
+    - name: Generate docker-compose.yml from template
+      template:
+        src: docker-compose.j2
+        dest: /etc/projects/everhour/docker-compose.yml
+
+    - name: Deploy Docker Stack
+      command: docker stack deploy -c /etc/projects/everhour/docker-compose.yml everhour
