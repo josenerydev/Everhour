@@ -1,0 +1,6 @@
+services:
+  everhour.api:
+    image: ${DOCKER_REGISTRY-}everhourapi
+    build:
+      context: src/Everhour.Api
+      dockerfile: Dockerfile
