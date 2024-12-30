@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 # Python Environments
 venv/
+.ansible_cache
